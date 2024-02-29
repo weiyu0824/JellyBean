@@ -1,0 +1,66 @@
+{
+    'end_to_end_profile': EndToEndAccuracyProfile(
+        operators=['ExtractImageFeature', 'SpeechRecognition'], 
+        acc_profile={
+            ('resnet18', 'wav2vec2-base-960h'): 54.02, 
+            ('resnet18', 'wav2vec2-large-960h-lv60-self'): 56.59, 
+            ('resnet34', 'wav2vec2-base-960h'): 54.37, 
+            ('resnet34', 'wav2vec2-large-960h-lv60-self'): 56.85, 
+            ('resnet50', 'wav2vec2-base-960h'): 55.42, 
+            ('resnet50', 'wav2vec2-large-960h-lv60-self'): 57.94, 
+            ('resnet101', 'wav2vec2-base-960h'): 55.91, 
+            ('resnet101', 'wav2vec2-large-960h-lv60-self'): 58.19, 
+            ('resnet152', 'wav2vec2-base-960h'): 55.76, 
+            ('resnet152', 'wav2vec2-large-960h-lv60-self'): 58.33
+        }), 
+    'per_operator_profiles': [
+        OperatorAccuracyProfile(
+            op_name='VQA', 
+            inputs=['ExtractImageFeature', 'SpeechRecognition'`], 
+            acc_profile={
+                'default': [
+                    AccSample(inputs_acc=[89.074, -3.823], output_acc=54.02), 
+                    AccSample(inputs_acc=[89.074,-1.8621], output_acc=56.59), 
+                    AccSample(inputs_acc=[91.42, -3.823], output_acc=54.37), 
+                    AccSample(inputs_acc=[91.42, -1.8621], output_acc=56.85), 
+                    AccSample(inputs_acc=[92.866, -3.823], output_acc=55.42), 
+                    AccSample(inputs_acc=[92.866, -1.8621], output_acc=57.94), 
+                    AccSample(inputs_acc=[93.548, -3.823], output_acc=55.91), 
+                    AccSample(inputs_acc=[93.548, -1.8621], output_acc=58.19), 
+                    AccSample(inputs_acc=[94.05, -3.823], output_acc=55.76), 
+                    AccSample(inputs_acc=[94.05, -1.8621], output_acc=58.33)
+                ]}, 
+            cost_profile={'default': 3.718242340022698}, 
+            weight=1.0
+        ), 
+        OperatorAccuracyProfile(
+            op_name='ExtractImageFeature', 
+            inputs=None, 
+            acc_profile={
+                'resnet18': [AccSample(inputs_acc=[], output_acc=89.074) ],
+                'resnet34': [AccSample(inputs_acc=[], output_acc=91.42) ],
+                'resnet50': [AccSample(inputs_acc=[], output_acc=92.866) ],
+                'resnet101': [AccSample(inputs_acc=[], output_acc=93.548) ],
+                'resnet152': [AccSample(inputs_acc=[], output_acc=94.05) ]}, 
+            cost_profile={
+                'resnet18': 6.0817391967773435
+                'resnet34': 7.805843679904938
+                'resnet50': 10.446570706367492
+                'resnet101': 17.108720197677613
+                'resnet152': 23.935289945602417}
+            weight=1.0
+        ), 
+        OperatorAccuracyProfile(
+            op_name='SpeechRecognition', 
+            inputs=None, 
+            acc_profile={
+                'wav2vec2-base-960h': [AccSample(inputs_acc=[], output_acc=-3.823)], 
+                'wav2vec2-large-960h-lv60-self': [AccSample(inputs_acc=[], output_acc=-1.8621)
+            ]}, 
+            cost_profile={
+                'wav2vec2-base-960h': 13.286894897930324, 
+                'wav2vec2-large-960h-lv60-self': 24.441278224810958}, 
+            weight=1.0
+        )
+    ]
+}
